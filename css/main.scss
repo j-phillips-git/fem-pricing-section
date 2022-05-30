@@ -1,0 +1,144 @@
+$colors: (
+  primary: #2ab3b1,
+  primaryLight: rgba(42, 179, 177, 0.8),
+  neutral: #fff,
+  accent: #c0df33,
+  textDark: #9aa7be,
+  body: #e6eff5,
+);
+
+$size: (
+  px-14: 0.875rem,
+  px-16: 1rem,
+  px-18: 1.125rem,
+  px-20: 1.25rem,
+  px-24: 1.5rem,
+  px-26: 1.625rem,
+  px-32: 2rem,
+  px-40: 2.5rem,
+);
+
+@function color($colorName) {
+  @return map-get($colors, $colorName);
+}
+
+@function px-rem($fontSize) {
+  @return map-get($size, $fontSize);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: color(body);
+  font-family: 'Karla', sans-serif;
+}
+
+a { 
+  text-decoration: none; 
+  transition: ease-in-out 0.3s;
+}
+
+
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 44.1%;
+  max-width: 1200px;
+  min-width: 635px;
+  margin: 163px auto;
+  box-shadow: 0px 15px 30px rgba(0, 81, 171, 0.148847);
+
+  h2 { 
+    font-size: px-rem(px-18);
+    margin-top: 0;  
+  }
+
+  .text-wrapper { padding: px-rem(px-40) px-rem(px-40) 0; }
+
+  .community {
+    grid-column: span 2;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    background-color: color(neutral);
+
+    h1 {
+      font-size: px-rem(px-24);
+      color: color(primary);
+      margin-top: 0;
+    }
+
+    h2 { color: color(accent); }
+
+    p {
+      margin-bottom: 0;
+      padding-bottom: px-rem(px-40);
+      line-height: px-rem(px-26);
+      color: color(textDark);
+    }
+  }
+
+  .subscription {
+    padding-bottom: px-rem(px-40);
+    background-color: color(primary);
+    color: color(neutral);
+
+    p { margin: 4px 0; }
+
+    .price {
+      font-size: px-rem(px-32);
+      font-weight: 700;
+    }
+
+    .price span {
+      font-size: px-rem(px-16);
+      font-weight: 400;
+      opacity: 0.5;
+    }
+
+    a {
+      display: inline-block;
+      margin: px-rem(px-26) 0 0 0;
+      padding: 1em 5.6em;
+      text-align: center;
+      border-radius: 5px;
+      box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.0973011);
+      background-color: color(accent);
+      color: color(neutral);
+    }
+
+    a:hover {
+      background-color: color(neutral);
+      color: color(primary);
+    }
+
+  }
+
+  .why-us {
+    background-color: color(primaryLight);
+
+    h2 { color: color(neutral); }
+
+    p {
+      width: 69%;
+      font-size: px-rem(px-14);
+      line-height: px-rem(px-20);
+      margin-bottom: 0;
+      padding-bottom: px-rem(px-40);
+      opacity: 0.75;
+      color: color(neutral);
+    }
+  }
+}
+
+@media screen and (max-width: 678px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    min-width: 90%;
+  }
+}
+
